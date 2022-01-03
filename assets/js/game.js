@@ -20,13 +20,14 @@ var fightOrSkip = function() {
         if (confirmSkip) {
             window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
             //subtract money from playerMoney for skipping, but don't let them go into the negatives
-            playerInfo.playerMoney = Math.Max(0, playerInfo.playerMoney - 10);
+            playerInfo.playerMoney = Math.max(0, playerInfo.playerMoney - 10);
 
             // return true if player wants to leave
-            return true;
+            return true; // value = ok click
         }
-    }
-    return false;
+        
+    } return false; // value = cancel click
+    
 };
 
 
@@ -40,10 +41,8 @@ var fight = function(enemy) {
            // if true, leave fight by breaking loop
            break;
        }  
-       var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
-
- 
-    
+           
+        
         // if player choses to fight, then fight
         if (promptFight === "fight" || promptFight === "FIGHT") {
     
@@ -57,7 +56,7 @@ var fight = function(enemy) {
             );
     
             // check enemy's health
-        if (enemy.health <= 0) {
+            if (enemy.health <= 0) {
             window.alert(enemy.name + " has died!");
 
             //award player money for winning
