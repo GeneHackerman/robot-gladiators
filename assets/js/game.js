@@ -11,7 +11,7 @@ var fightOrSkip = function() {
     promptFight = promptFight.toLowerCase();
 
     // if player picks "skip" confirm and then stop the loop
-    if (promptFight === "skip" || promptFight === "SKIP") {
+    if (promptFight === "skip") {
         // confirm player wants to skip
         var confirmSkip = window.confirm("Are you sure you'd like to quit?");
 
@@ -42,35 +42,21 @@ var fight = function(enemy) {
        }  
        var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
 
-        // if player chooses to skip, confirm and then stop loop
-        if (promptFight === "skip" || promptFight === "SKIP") {
-        // confirm player wants to skip
-        var confirmskip = window.confirm("Are you sure you'd like to quit?");
-        
-        // if yes (true), leave fight
-        if (confirmskip) {
-        window.alert(playerName + " has decided to skip this fight. Goodbye!");
-        // subtract money from playerMoney for skipping
-        playerInfo.money = Math.max(0, playerInfo.money - 10);
-        console.log("playerMoney", playerInfo.money);
-        break;
-        }
-    }
+ 
     
         // if player choses to fight, then fight
-        if (promptFight === "fight" || promptFight === "FIGHT") 
-        {
+        if (promptFight === "fight" || promptFight === "FIGHT") {
     
-        // subtract the value of 'playerAttack' from the value of 'enemy.health' and use that result to update the value in the 'enemy.health' variable
-        // generate random damage value based on player's attack
-        var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack); 
-        
-        enemy.health = Math.max(0, enemy.health - damage);  
-        console.log(
-            playerInfo.name + " attacked " + enemy.name + ". " + enemy.name + " now has " + enemy.health + " health remaining."
-        );
+            // subtract the value of 'playerAttack' from the value of 'enemy.health' and use that result to update the value in the 'enemy.health' variable
+            // generate random damage value based on player's attack
+            var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack); 
+            
+            enemy.health = Math.max(0, enemy.health - damage);  
+            console.log(
+                playerInfo.name + " attacked " + enemy.name + ". " + enemy.name + " now has " + enemy.health + " health remaining."
+            );
     
-        // check enemy's health
+            // check enemy's health
         if (enemy.health <= 0) {
             window.alert(enemy.name + " has died!");
 
@@ -189,11 +175,13 @@ if (playAgainConfirm) {
 var shop = function() {
     // ask player what they'd like to do
     var shopOptionPrompt = window.prompt(
-        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice."
+        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE."
         );
         
         // use switch case to carry out action
 
+    shopOptionPrompt = parseInt(shopOptionPrompt);
+    // use switch case to carry out action
     switch (shopOptionPrompt) {
         case 1:
             playerInfo.refillHealth();
