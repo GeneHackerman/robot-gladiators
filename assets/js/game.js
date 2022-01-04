@@ -47,7 +47,7 @@ var fight = function(enemy) {
        }  
            
         
-        // if player choses to fight, then fight
+        // if player chooses to fight, then fight
         //if (promptFight === "fight" || promptFight === "FIGHT") 
     
             // subtract the value of 'playerAttack' from the value of 'enemy.health' and use that result to update the value in the 'enemy.health' variable
