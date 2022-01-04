@@ -21,12 +21,16 @@ var fightOrSkip = function() {
             window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
             //subtract money from playerMoney for skipping, but don't let them go into the negatives
             playerInfo.playerMoney = Math.max(0, playerInfo.playerMoney - 10);
+            shop();
 
             // return true if player wants to leave
             return true; // value = ok click
         }
         
-    } return false; // value = cancel click
+    }
+
+    
+    return false; // value = cancel click
     
 };
 
@@ -44,7 +48,7 @@ var fight = function(enemy) {
            
         
         // if player choses to fight, then fight
-        if (promptFight === "fight" || promptFight === "FIGHT") {
+        //if (promptFight === "fight" || promptFight === "FIGHT") 
     
             // subtract the value of 'playerAttack' from the value of 'enemy.health' and use that result to update the value in the 'enemy.health' variable
             // generate random damage value based on player's attack
@@ -70,7 +74,7 @@ var fight = function(enemy) {
     
         // subtract the value of 'enemyAttack' from the value of 'playerHealth' and use that result to update the value in the 'playerHealth' variable
         // generate random damage value based on enemy's attack
-        var damage = randomNumber(enemy.attack - 3, enemy.attack);
+        var damage = randomNumber(enemy.attack - 3, enemy.attack); {
         
         playerInfo.health = Math.max(0, playerInfo.health - damage);
         console.log(
@@ -89,11 +93,12 @@ var fight = function(enemy) {
         
             // if no (false), ask question again by running fight() again
         } else {
+            
             fight();
         }
-
+    
     }
-   
+  
 };
     
 
@@ -117,8 +122,6 @@ for(var i = 0; i < enemyInfo.length; i++) {
     // reset enemy.health before starting new fight
     pickedEnemyObj.health = randomNumber(40,60);
     
-    // user debugger to pause script from running and check what's going on at the moment in the code
-    // debugger;
 
     // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
     fight(pickedEnemyObj);
@@ -224,6 +227,7 @@ var getPlayerName = function () {
     console.log("Your robot's name is " + name);
     return name;
 };
+// end game function
 
 /* GAME INFORMATION / VARIABLES */
 var playerInfo = {
