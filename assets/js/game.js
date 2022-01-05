@@ -38,6 +38,7 @@ var fightOrSkip = function() {
 
 // fight function (now with parameter for enemy's name)
 var fight = function(enemy) {
+    console.log(playerInfo.health)
     // repeat and execute as long as the enemy-robot is alive
     while(playerInfo.health > 0 && enemy.health > 0) {
         // ask player if they'd like to fight or skip using fightOrSkip function
@@ -85,20 +86,15 @@ var fight = function(enemy) {
         if (playerInfo.health <= 0) {
             window.alert(playerInfo.name + " has died!");
             // leave while() loop if player died
-            break;
-        }
-        else {
-            window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
-        }
-        
-            // if no (false), ask question again by running fight() again
-        } else {
+            //break;
+        } else if (window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.")) {
             
+        } else {
+            // if no (false), ask question again by running fight() again
             fight();
         }
-    
     }
-  
+}
 };
     
 
@@ -282,7 +278,3 @@ var enemyInfo = [
 
 //start game when page loads
 startGame();
-     
-
-
-
