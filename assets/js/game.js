@@ -93,7 +93,7 @@ var fight = function(enemy) {
             // if no (false), ask question again by running fight() again
             fight();
         }
-    }
+    } // added bracket to fix fightOrSkip call
 }
 };
     
